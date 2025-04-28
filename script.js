@@ -214,4 +214,4 @@ fetchFiles();
 
 // Update the file list every 25 minutes (1500000ms)
 //To get *ms* add three zeros to the end of the amount of seconds
-setInterval(fetchFiles, 15000000);
+setInterval(fetchFiles, 5000);
