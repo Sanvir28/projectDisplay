@@ -144,29 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
     mobileOverlay.style.display = 'none';
   }
 
-  async function fetchRepoInfo() {
-    try {
-      const response = await fetch(`${GITHUB_API_BASE}/repos/${REPO_OWNER}/${REPO_NAME}`);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch repository info: ${response.status}`);
-      }
-      
-      repoInfo = await response.json();
-      updateRepoInfo();
-    } catch (error) {
-      showErrorToast(error.message);
-      console.error('Error fetching repo info:', error);
-    }
-  }
-
-  function updateRepoInfo() {
-    if (repoInfo) {
-      watchersCount.textContent = repoInfo.watchers_count || 0;
-      starsCount.textContent = repoInfo.stargazers_count || 0;
-      forksCount.textContent = repoInfo.forks_count || 0;
-    }
-  }
-
   async function fetchFiles() {
     if (allFilesLoading) allFilesLoading.style.display = 'flex';
     if (codeHSLoading) codeHSLoading.style.display = 'flex';
